@@ -40,7 +40,7 @@ def update_data(url,id,cursor):
 
 @app.route('/')
 def helllo():
-    print("Hi,there")
+    return {"Hi,":"there"}
 def update():
     connection = psycopg2.connect(user = "zankzcqmyuheau",
                                   password = "b3913eb5fdb660bd936979c8092adc0c2bef6b1294caf4b2395d5d387f511407",
