@@ -42,6 +42,7 @@ def update_data(url,id,cursor):
 @app.route('/')
 def update():
     current_time = time.time()
+    global previous_time
     if (current_time - previous_time) <180 :
         return {"message":"Wait an another 3 mins","current_time":current_time,"previous_time":previous_time,"difference":int(current_time - previous_time)}
     previous_time = current_time
