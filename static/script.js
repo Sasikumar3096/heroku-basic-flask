@@ -61,10 +61,13 @@ function  get_data() {
 
 
 var url ="https://theappcode.herokuapp.com/update";
+$("#response").html("The Score is being Updated in the background please wait a second....");
 $.ajax(url,   // Order By score
     {
         success: function (data, status, xhr) {// success callback function
-			console.log(data);
+				$("#response").html("The Scores are upto date");
+			
+			
 
     }
 });
