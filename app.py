@@ -40,7 +40,7 @@ def update_data(url,id,cursor):
 		
 @app.route('/')
 def root():
-    return app.send_static_file('index.html')
+    return app.send_static_file('/index.html')
 
 @app.route('/update')
 def update():
