@@ -40,7 +40,12 @@ def update_data(url,id,cursor):
 		
 @app.route('/')
 def root():
-    return app.send_static_file('/index.html')
+    return "<a href=""https://theappcode.herokuapp.com./static/index.html></a>";
+
+
+@app.route('/<name>/<roll_number>/<email>')
+def root(name,roll_number,email):
+    return name+roll_number+email;
 
 @app.route('/update')
 def update():
