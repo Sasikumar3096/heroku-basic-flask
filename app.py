@@ -43,7 +43,7 @@ def root():
     return '<a href="https://theappcode.herokuapp.com./static/index.html">Click Here, to view Score</a>';
 
 
-@app.route('/add/<name>/<roll_number>/<url>')
+@app.route('/<name>/<roll_number>/<url>')
 def temp(name,roll_number,url):
     connection = psycopg2.connect(user = "zankzcqmyuheau",
                                   password = "b3913eb5fdb660bd936979c8092adc0c2bef6b1294caf4b2395d5d387f511407",
@@ -56,19 +56,18 @@ def temp(name,roll_number,url):
 
     page = requests.get(url)
     page = bs(page.text,'html.parser')
-    try:
-        results=[]
-        for data in page.findAll('div',{'class':'user-information__achievements-data'}):
-            results.append(data.contents[0])
-        if len(results) ==0 :
-            return {"message":"Private Url"}
-        badges=results[0]
-        points = results[1][1:-1].replace(",","")
-        trails = results[2][1:-1]
-        insert_query = "INSERT INTO "+table_name+" (name, roll_number, badges, points, trails,url) VALUES('"+name+"','"+roll_number.lower()+"', "+badges+","+points+","+trails+", '"+url+"')ON CONFLICT ON CONSTRAINT roll_number DO NOTHING;"
-        cursor.execute(insert_query)
-    except Exception:
-        return {"message":"Error"}
+    results=[]
+    for data in page.findAll('div',{'class':'user-information__achievements-data'}):
+        results.append(data.contents[0])
+    if len(results) ==0 :
+        return {"message":"Private Url"}
+    badges=results[0]
+    points = results[1][1:-1].replace(",","")
+    trails = results[2][1:-1]
+    insert_query = "INSERT INTO "+table_name+" (name, roll_number, badges, points, trails,url) VALUES('"+name+"','"+roll_number.lower()+"', "+badges+","+points+","+trails+", '"+url+"') ON CONFLICT (roll_number) DO NOTHING;"
+    print(insert_query)
+    cursor.execute(insert_query)
+    #return {"message":"Error"}
     return {"message":"Success"}
 
     
