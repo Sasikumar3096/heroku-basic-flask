@@ -9,7 +9,6 @@ previous_time = time.time() -180
 
 app = Flask(__name__)
 
-las
 table_name='final_table'
 
 
