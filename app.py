@@ -43,7 +43,7 @@ def update_data(url,id,cursor):
 @app.route('/')
 def update():
     current_time = time.time()
-    if !((current_time - previous_time) >600):
+    if (current_time - previous_time) <600 :
         return {"message":"Wait an another 3 mins"}
     connection = psycopg2.connect(user = "zankzcqmyuheau",
                                   password = "b3913eb5fdb660bd936979c8092adc0c2bef6b1294caf4b2395d5d387f511407",
