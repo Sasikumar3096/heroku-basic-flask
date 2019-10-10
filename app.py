@@ -3,7 +3,6 @@ from datetime import datetime
 import psycopg2
 from bs4 import BeautifulSoup as bs
 import requests
-import xlrd
 import json
 
 app = Flask(__name__)
