@@ -3,4 +3,3 @@ gunicorn
 psycopg2
 bs4 
 requests
-json
