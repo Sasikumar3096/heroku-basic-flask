@@ -1,4 +1,4 @@
-fuction add(){
+function add(){
 var user_name = encodeURI($("username").html());
 var link = encodeURI($("link").html());
 var roll_number = encodeURI($("roll_number").html());
