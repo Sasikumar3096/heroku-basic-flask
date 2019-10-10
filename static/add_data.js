@@ -10,7 +10,16 @@ return 0;
 $.ajax(final_url,{
 	success: function (data, status, xhr) {
 		console.log(data);
-		alert("Data Added Success");
+		if (data['message']=='Success')
+		{alert("Data Added Success");
+		
+		$("#roll_number").val()="";
+		$("#username").val()="";
+		$("#link").val()="";
+		}
+		else{
+		alert("Make Sure that you have entered the URL in the specified format OR Your trailhead url is public");
+		}
 	}
 });
 }
