@@ -1,2 +1,7 @@
 Flask
 gunicorn
+psycopg2
+bs4 
+requests
+xlrd
+json
