@@ -60,7 +60,7 @@ function  get_data() {
 });
 
 
-var url ="https://theappcode.herokuapp.com/";
+var url ="https://theappcode.herokuapp.com/update";
 $.ajax(url,   // Order By score
     {
         success: function (data, status, xhr) {// success callback function
