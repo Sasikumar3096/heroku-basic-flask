@@ -39,7 +39,7 @@ def update_data(url,id,cursor):
         update_data(url,id,cursor)
 		
 
-@app.route('/')
+@app.route('/update')
 def update():
     current_time = time.time()
     global previous_time
