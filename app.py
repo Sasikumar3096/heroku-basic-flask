@@ -9,7 +9,7 @@ previous_time = time.time() -180
 
 app = Flask(__name__)
 
-table_name='final_table'
+table_name='temp1'
 
 
 def get_datas(cursor):
