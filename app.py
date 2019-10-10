@@ -43,10 +43,35 @@ def root():
     return "<a href=""https://theappcode.herokuapp.com./static/index.html></a>";
 
 
-@app.route('/<name>/<roll_number>/<email>')
-def root(name,roll_number,email):
-    return name+roll_number+email;
+@app.route('/add/<name>/<roll_number>/<url>')
+def temp(name,roll_number,url):
+    connection = psycopg2.connect(user = "zankzcqmyuheau",
+                                  password = "b3913eb5fdb660bd936979c8092adc0c2bef6b1294caf4b2395d5d387f511407",
+                                  host = "ec2-46-137-113-157.eu-west-1.compute.amazonaws.com",
+                                  port = "5432",
+                                  database = "d5de9d996c3btd")
+    cursor = connection.cursor()
 
+    url = "https://trailhead.salesforce.com/en/me/"+str(url);
+
+    page = requests.get(url)
+    page = bs(page.text,'html.parser')
+    try:
+        results=[]
+        for data in page.findAll('div',{'class':'user-information__achievements-data'}):
+            results.append(data.contents[0])
+        if len(results) ==0 :
+            return {"message":"Private Url"}
+        badges=results[0]
+        points = results[1][1:-1].replace(",","")
+        trails = results[2][1:-1]
+        insert_query = "INSERT INTO "+table_name+" (name, roll_number, badges, points, trails,url) VALUES('"+name+"','"+roll_number.lower()+"', "+badges+","+points+","+trails+", '"+url+"')ON CONFLICT ON CONSTRAINT roll_number DO NOTHING;"
+        cursor.execute(insert_query)
+    except Exception:
+        return {"message":"Error"}
+    return {"message":"Success"}
+
+    
 @app.route('/update')
 def update():
     current_time = time.time()
