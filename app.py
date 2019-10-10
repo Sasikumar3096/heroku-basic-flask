@@ -67,6 +67,9 @@ def temp(name,roll_number,url):
     insert_query = "INSERT INTO "+table_name+" (name, roll_number, badges, points, trails,url) VALUES('"+name+"','"+roll_number.lower()+"', "+badges+","+points+","+trails+", '"+url+"') ON CONFLICT (roll_number) DO NOTHING;"
     print(insert_query)
     cursor.execute(insert_query)
+
+    connection.commit()
+    connection.close()
     #return {"message":"Error"}
     return {"message":"Success"}
 
