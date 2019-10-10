@@ -40,7 +40,7 @@ def update_data(url,id,cursor):
 		
 @app.route('/')
 def root():
-    return "<a href=""https://theappcode.herokuapp.com./static/index.html></a>";
+    return '<a href="https://theappcode.herokuapp.com./static/index.html">Click Here, to view Score</a>';
 
 
 @app.route('/add/<name>/<roll_number>/<url>')
