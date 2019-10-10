@@ -58,7 +58,8 @@ def update():
         update_data(url,id,cursor)
     connection.commit()
     connection.close()
-    return {'message':'success'},200
+    return {"message":"Success","current_time":current_time,"previous_time":previous_time,"difference":int(current_time - previous_time)},200
+    
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
