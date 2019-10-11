@@ -4,10 +4,14 @@ import psycopg2
 from bs4 import BeautifulSoup as bs
 import requests
 import json
+from flask_cors import CORS, cross_origin
 
 previous_time = time.time() -180
 
 app = Flask(__name__)
+
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 table_name='final_table'
 
@@ -44,6 +48,7 @@ def root():
 
 
 @app.route('/<name>/<roll_number>/<url>')
+@cross_origin()
 def temp(name,roll_number,url):
     connection = psycopg2.connect(user = "zankzcqmyuheau",
                                   password = "b3913eb5fdb660bd936979c8092adc0c2bef6b1294caf4b2395d5d387f511407",
@@ -75,6 +80,7 @@ def temp(name,roll_number,url):
 
     
 @app.route('/update')
+@cross_origin()
 def update():
     current_time = time.time()
     global previous_time
