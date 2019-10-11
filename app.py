@@ -3,7 +3,6 @@ import time
 import psycopg2
 from bs4 import BeautifulSoup as bs
 import requests
-import json
 from flask_cors import CORS, cross_origin
 
 previous_time = time.time() -180
@@ -17,17 +16,15 @@ table_name='final_table'
 
 
 def get_datas(cursor):
-    
     select_query = "SELECT * FROM "+table_name+";"
     cursor.execute(select_query)
     datas = cursor.fetchall()
     return datas
 
 def update_data(url,id,cursor):
-    
     page = requests.get(url)
     page = bs(page.text,'html.parser')
-       
+
     try:
         results=[]
         for data in page.findAll('div',{'class':'user-information__achievements-data'}):
@@ -41,7 +38,7 @@ def update_data(url,id,cursor):
     except Exception:
         print("Error")
         update_data(url,id,cursor)
-		
+
 @app.route('/')
 def root():
     return '<a href="https://theappcode.herokuapp.com./static/index.html">Click Here, to view Score</a>';
@@ -78,7 +75,7 @@ def temp(name,roll_number,url):
     #return {"message":"Error"}
     return {"message":"Success"}
 
-    
+
 @app.route('/update')
 @cross_origin()
 def update():
@@ -100,7 +97,7 @@ def update():
     connection.commit()
     connection.close()
     return {"message":"Success","current_time":current_time,"previous_time":previous_time,"difference":int(current_time - previous_time)},200
-    
+
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
