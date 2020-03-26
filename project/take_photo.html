@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"></script>
+<script type="text/javascript" src="send_pic.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=number] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+.okbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: green;
+}
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+ .okbtn {
+     width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<h1 align="center">SSSV BANK</h1>
+
+<form action="/action_page.php" method="post">
+  <div class="imgcontainer">
+    
+  </div>
+
+  <div class="container">
+   <center> 
+   <div id="camera" style="height:auto;width:auto; text-align:left;"></div>
+
+    <!--FOR THE SNAPSHOT-->
+    <input type="button" value="Take a Snap" id="btPic" onclick="takeSnapShot()" /> 
+    
+	<p id="snapShot"></p>     
+	<input type="button" value="Submit" onclick="sendPic()"/> 
+    
+</center>
+    
+  </div>
+   
+  <div class="container" style="background-color:#f1f1f1">
+ <center>
+    <a href="index.html"><button type="button" class="cancelbtn">Cancel</button></a>
+    </center>
+  </div>
+</form>
+
+</body>
+</html>
+
+<script>
+    // CAMERA SETTINGS.
+    Webcam.set({
+        width: 220,
+        height: 190,
+        image_format: 'jpeg',
+        jpeg_quality: 100
+    });
+    Webcam.attach('#camera');
+
+    // SHOW THE SNAPSHOT.
+    takeSnapShot = function () {
+        Webcam.snap(function (data_uri) {
+           document.getElementById('snapShot').innerHTML = 
+                '<img id="photo" src="' + data_uri + '" width="500px" height="400px" />';
+        });
+    }
+</script>
