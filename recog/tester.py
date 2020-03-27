@@ -7,9 +7,9 @@ def main():
     path = os.getcwd()
     path = path.replace("\\","/")
     if "recog" in path:
-        path.replace("recog", "temp/images.png")
+        path.replace("recog", "temp/images.jpeg")
     else:
-        path = path + "/temp/images.png"
+        path = path + "/temp/images.jpeg"
     #test_img = cv2.imread('C:/Users/Fokal/Documents/college project/heroku-basic-flask/temp/images.png')
     test_img = cv2.imread(path)
 

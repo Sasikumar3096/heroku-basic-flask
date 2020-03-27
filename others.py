@@ -23,7 +23,7 @@ def decode_image(image):
     base64_img_bytes = base64.b64decode(image[23:])
     try:
         create_folder()
-        with open('temp/images.png', 'wb') as file_to_save:
+        with open('temp/images.jpeg', 'wb') as file_to_save:
             decoded_image_data = base64_img_bytes
             file_to_save.write(decoded_image_data)
 
