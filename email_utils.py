@@ -5,6 +5,7 @@ import urllib.request
 import urllib.parse
 
 url = "localhost/project/verify_access.php?key="
+url = "http://18.217.103.149/project/verify_access.php?key="
 def send_email(email,transaction_id):
     pass
     msg = MIMEMultipart()
@@ -53,5 +54,6 @@ def sendSMS(apikey, numbers, sender, message):
 
 
 
-def send_msg(input1,input2):
-    send_sms(input1,input2)
+def send_msg(email,number, transaction_id):
+    send_email(email, transaction_id)
+    send_sms(number, transaction_id)

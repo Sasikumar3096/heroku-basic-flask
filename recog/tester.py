@@ -44,7 +44,7 @@ def main():
         print("Confidence {} \n Label: {}".format(confidence, label))
         draw_rect(test_img, face)
         predicted_name = name[label]
-        cv2.destroyAllWindows
+
         return confidence,label
         if confidence > 37:
             continue
@@ -79,7 +79,7 @@ def faceDetection(test_img):
     # resized_img = cv2.resize(test_img, (750,700))
     # cv2.imshow("face-Detected",resized_img)
     # cv2.waitKey(100)
-    # cv2.destroyAllWindows
+    #cv2.destroyAllWindows
 
 
     return faces, gray_img

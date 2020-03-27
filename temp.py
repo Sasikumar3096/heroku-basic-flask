@@ -21,7 +21,7 @@ def temp(email, transaction_id):
         confidence, label = recognize_face()
         print(f"Match: {confidence}, DB OwnerMatched Label:{label}")
         if user_id == label and confidence > 70:
-            send_msg(phone_number, transaction_id)
+            send_msg(email, phone_number, transaction_id)
             return "Message Sent"
         if confidence == 1000 and label == 0:
             return "no face detected"
