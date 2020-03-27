@@ -30,5 +30,5 @@ def temp(email, transaction_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True)
+    app.run(host="18.217.103.149",debug=True, use_reloader=True)
 
