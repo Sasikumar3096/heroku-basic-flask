@@ -3,14 +3,14 @@ from mysql.connector import Error
 
 from others import decode_image
 
-# connection = mysql.connector.connect(host='localhost',
-#                                      database='project',
-#                                      user='root',
-#                                      password='')
-connection = mysql.connector.connect(host='18.217.103.149',
+connection = mysql.connector.connect(host='localhost',
                                      database='project',
-                                     user='sasi',
-                                     password='RamSs91027')
+                                     user='root',
+                                     password='')
+# connection = mysql.connector.connect(host='18.217.103.149',
+#                                      database='project',
+#                                      user='sasi',
+#                                      password='RamSs91027')
 db_Info = connection.get_server_info()
 print("Connected to MySQL Server version ", db_Info)
 cursor = connection.cursor()
