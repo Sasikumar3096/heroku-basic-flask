@@ -51,10 +51,10 @@ def main():
 
         put_text(test_img, predicted_name, x, y)
 
-    resized_img = cv2.resize(test_img, (500, 500))
-    cv2.imshow("face-Detected", resized_img)
-    cv2.waitKey(10)
-    cv2.destroyAllWindows
+    # resized_img = cv2.resize(test_img, (500, 500))
+    # cv2.imshow("face-Detected", resized_img)
+    # cv2.waitKey(10)
+    # cv2.destroyAllWindows
 
     #
     # for(x,y,w,h) in faces_detected:
@@ -76,10 +76,10 @@ def faceDetection(test_img):
     for(x,y,w,h) in faces:
         cv2.rectangle(test_img, (x,y), (x+w, y+h), (255,0,0), thickness = 10)
 
-    resized_img = cv2.resize(test_img, (750,700))
-    cv2.imshow("face-Detected",resized_img)
-    cv2.waitKey(100)
-    cv2.destroyAllWindows
+    # resized_img = cv2.resize(test_img, (750,700))
+    # cv2.imshow("face-Detected",resized_img)
+    # cv2.waitKey(100)
+    # cv2.destroyAllWindows
 
 
     return faces, gray_img
