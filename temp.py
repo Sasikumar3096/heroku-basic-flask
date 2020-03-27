@@ -5,6 +5,7 @@ from database import get_user_info, get_photo_from_db
 from verifier import recognize_face
 app = Flask(__name__)
 CORS(app)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route('/')
 def root():
@@ -20,8 +21,9 @@ def temp(email, transaction_id):
         print(f"Match: {confidence}, DB OwnerMatched Label:{label}")
         if user_id == label and confidence > 70:
             send_msg(phone_number, transaction_id)
-
             return "Message Sent"
+        if confidence == 1000 and label == 0:
+            return "Didnt Work"
 
 
 

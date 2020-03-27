@@ -3,16 +3,20 @@ from mysql.connector import Error
 
 from others import decode_image
 
-connection = mysql.connector.connect(host='localhost',
+# connection = mysql.connector.connect(host='localhost',
+#                                      database='project',
+#                                      user='root',
+#                                      password='')
+connection = mysql.connector.connect(host='18.217.103.149',
                                      database='project',
-                                     user='root',
-                                     password='')
+                                     user='sasi',
+                                     password='RamSs91027')
 db_Info = connection.get_server_info()
 print("Connected to MySQL Server version ", db_Info)
 cursor = connection.cursor()
 
 def get_photo_from_db():
-    cursor.execute("select photo from transaction where id = 2 order by id desc limit 1;")
+    cursor.execute("select photo from transaction order by id desc limit 1;")
     photo = cursor.fetchone()[0]
 
     decode_image(photo)

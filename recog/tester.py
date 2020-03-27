@@ -10,6 +10,7 @@ def main():
     faces_detected, gray_img = faceDetection(test_img)
     if len(faces_detected) == 0:
         print("No face Detected")
+        return 1000, 0
     else:
         print("FaceDetected")
 
