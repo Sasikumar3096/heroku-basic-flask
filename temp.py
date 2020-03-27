@@ -26,6 +26,9 @@ def temp(email, transaction_id):
         if confidence == 1000 and label == 0:
             return "no face detected"
 
+    else:
+        send_msg(email, phone_number, transaction_id)
+        return "Message Sent"
 
 
 
