@@ -3,6 +3,7 @@ from flask_cors import CORS
 from email_utils import send_msg
 from database import get_user_info, get_photo_from_db
 from verifier import recognize_face
+
 app = Flask(__name__)
 CORS(app)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
@@ -30,5 +31,6 @@ def temp(email, transaction_id):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",debug=True, use_reloader=True)
+    context = ('server.crt', 'server.key')
+    app.run(host="0.0.0.0",debug=True, use_reloader=True, ssl_context=context)
 
