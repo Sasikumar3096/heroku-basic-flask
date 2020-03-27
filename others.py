@@ -16,12 +16,17 @@ def create_folder():
     except Exception as e:
         print(e)
 
+
 def decode_image(image):
-    create_folder()
+
     print("Inside Decode Image")
     base64_img_bytes = base64.b64decode(image[23:])
-    with open('temp/images.png', 'wb') as file_to_save:
-        decoded_image_data = base64_img_bytes
-        file_to_save.write(decoded_image_data)
+    try:
+        create_folder()
+        with open('temp/images.png', 'wb') as file_to_save:
+            decoded_image_data = base64_img_bytes
+            file_to_save.write(decoded_image_data)
 
-    print(os.path.abspath(os.getcwd())+ "temp/images.png")
+        print(os.path.abspath(os.getcwd())+ "temp/images.png")
+    except:
+        decode_image(image)

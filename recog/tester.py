@@ -3,10 +3,16 @@ import os
 import numpy as np
 
 
-
-
 def main():
-    test_img = cv2.imread('C:/Users/Fokal/Documents/college project/heroku-basic-flask/temp/images.png')
+    path = os.getcwd()
+    path = path.replace("\\","/")
+    if "recog" in path:
+        path.replace("recog", "temp/images.png")
+    else:
+        path = path + "/temp/images.png"
+    #test_img = cv2.imread('C:/Users/Fokal/Documents/college project/heroku-basic-flask/temp/images.png')
+    test_img = cv2.imread(path)
+
     faces_detected, gray_img = faceDetection(test_img)
     if len(faces_detected) == 0:
         print("No face Detected")
@@ -60,16 +66,7 @@ def main():
     # cv2.destroyAllWindows
 
 
-if __name__ == "__main__":
-    print(main())
-
-
-import cv2
-import os
-import numpy as np
-
 def faceDetection(test_img):
-
     gray_img = cv2.cvtColor(test_img,cv2.COLOR_BGR2GRAY)
 
     face_haar_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -127,3 +124,6 @@ def put_text(test_img, text , x,y):
     cv2.putText(test_img, text, (x,y), cv2.FONT_HERSHEY_DUPLEX,3,(255,0,0), 6)
 
 
+
+if __name__ == "__main__":
+    print(main())
