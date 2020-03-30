@@ -35,6 +35,7 @@ def temp(email, transaction_id):
 
 
 if __name__ == '__main__':
+    print("inside ,main")
     context = ('server.crt', 'server.key')
-    app.run(host="0.0.0.0",debug=True, use_reloader=True, ssl_context=context)
+    app.run(host="0.0.0.0",debug=True, use_reloader=True, ssl_context=context, threaded=True)
 
