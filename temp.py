@@ -6,7 +6,6 @@ from verifier import recognize_face
 
 app = Flask(__name__)
 CORS(app)
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route('/')
 def root():
