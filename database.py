@@ -9,7 +9,7 @@ try:
                                      user='root',
                                      password='')
 except:
-    connection = mysql.connector.connect(host='18.217.103.149',
+    connection = mysql.connector.connect(host='3.134.84.95',
                                      database='project',
                                      user='sasi',
                                      password='RamSs91027')
