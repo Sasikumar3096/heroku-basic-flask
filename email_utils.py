@@ -31,11 +31,11 @@ def send_email(email,transaction_id):
 
 def send_sms(number, transaction_id):
     print("Sending SMS passed....")
-    return
+    pass
     msg_text = f''' 
     Hi, We have seen a activity from you atm card.
     Kindly approve/decline the transaction by clicking the below link 
-    http://{url+transaction_id}
+    {url+transaction_id}
     '''
     print(msg_text)
     resp = sendSMS('LMqhxysOrKc-HSuo4LU8mv4lVwETyFdEK7Mcmye1NU', "91"+number,

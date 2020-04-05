@@ -21,10 +21,12 @@ def temp(email, transaction_id):
         print(f"Match: {confidence}, DB OwnerMatched Label:{label}")
         if user_id == label and confidence > 70:
             send_msg(email, phone_number, transaction_id)
+            ##allow_user
             return "Message Sent"
         if confidence == 1000 and label == 0:
             return "no face detected"
         else:
+            send_msg(email, phone_number, transaction_id)
             return "Face not Matched"
 
     else:
