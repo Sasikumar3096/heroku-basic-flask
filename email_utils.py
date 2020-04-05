@@ -7,7 +7,7 @@ import urllib.parse
 url = "localhost/project/verify_access.php?key="
 url = "http://3.134.84.95/project/verify_access.php?key="
 def send_email(email,transaction_id):
-    pass
+
     msg = MIMEMultipart()
     msg['Subject'] = "ATM Alert"
     html = f"""\
@@ -31,7 +31,7 @@ def send_email(email,transaction_id):
 
 def send_sms(number, transaction_id):
     print("Sending SMS passed....")
-    pass
+    return
     msg_text = f''' 
     Hi, We have seen a activity from you atm card.
     Kindly approve/decline the transaction by clicking the below link 
